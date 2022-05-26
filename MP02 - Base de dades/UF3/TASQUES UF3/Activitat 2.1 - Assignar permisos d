@@ -1,0 +1,29 @@
+# Activitat 2.1 - Assignar permisos d’usuari
+
+USE m02_UF3_starwars;
+
+-- Tasca 1. L'usuari yoda és l'administrador, per tant que tingui permís per a fer tot.
+GRANT ALL PRIVILEGES ON * TO yoda@localhost WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- Tasca 2. Connectat amb l’usuari yoda i genera l’estrucura de la base de dades seguint les seguents taules i camps, alhora relaciona-les:
+CREATE TABLE films (
+	id_film TINYINT,
+	created DATE, -- The date that this resource was created.
+	director VARCHAR(30), -- The name of the director of this film.
+	title VARCHAR(50), -- The title of this film
+	episode_id TINYINT-- The episode number of this film.
+);
+
+CREATE TABLE planets (
+	id_planet TINYINT,
+	name VARCHAR(30), -- The name of this planet.
+	population INT -- The average population of sentient beings inhabiting this planet.
+);
+
+CREATE TABLE films_planets (
+	id_film TINYINT,
+	id_planet TINYINT
+);
+
+-- Tasca 3. Fes que l'usuari yoda doni permís a obi-wan.kenobi els privilegis de seleccionar i inserir registres sobre la taula films.
